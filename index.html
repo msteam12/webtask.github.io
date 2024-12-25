@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('file:///C:/Users/Hasim/Downloads/web.jpg.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container, .register-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            display: none; /* Initially hidden */
+        }
+        .login-container.active, .register-container.active {
+            display: block; /* Show when active */
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-button, .register-button, .register-link, .login-link {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .register-link {
+            background-color: #f44336;
+        }
+        .login-link {
+            background-color: #4CAF50;
+        }
+    </style>
+    <script>
+        function toggleForm(formType) {
+            const loginContainer = document.querySelector('.login-container');
+            const registerContainer = document.querySelector('.register-container');
+
+            if (formType === 'register') {
+                loginContainer.classList.remove('active');
+                registerContainer.classList.add('active');
+            } else {
+                registerContainer.classList.remove('active');
+                loginContainer.classList.add('active');
+            }
+        }
+
+        // Show login form initially
+        window.onload = function() {
+            document.querySelector('.login-container').classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <div class="input-group">
+                <label for="username">Number/Email</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        <a href="#" class="register-link" onclick="toggleForm('register')">New User? Register Here</a>
+    </div>
+
+    <div class="register-container">
+        <h2>Register</h2>
+        <form>
+            <div class="input-group">
+                <label for="new-username">Number/Email</label>
+                <input type="text" id="new-username" name="new-username" required>
+            </div>
+            <div class="input-group">
+                <label for="new-password">Password</label>
+                <input type="password" id="new-password" name="new-password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit" class="register-button">Register</button>
+        </form>
+        <a href="#" class="login-link" onclick="toggleForm('login')">Already have an account? Login Here</a>
+    </div>
+</body>
+</html>
+
